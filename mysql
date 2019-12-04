@@ -1,0 +1,85 @@
+
+
+create table school(
+  id bigint not null auto_increment,
+  description varchar(255) not null,
+  no varchar(255) not null,
+  remarks varchar(255),
+  primary key(id)
+);
+
+  create table department(
+  id bigint not null auto_increment,
+  description varchar(255),
+  no varchar(255) not null,
+  remarks varchar(255),
+  school_id bigint not null,
+  primary key(id),
+  foreign key(school_id)references school(id) on delete cascade
+ );
+
+ create table teacher(
+ id bigint not null auto_increment,
+ no varchar(255) not null,
+ name varchar(255) not null,
+ profTitle_id bigint not null,
+ degree_id bigint not null,
+ department_id bigint not null,
+ primary key(id),
+ foreign key(profTitle_id)references profTitle(id), 
+ foreign key(degree_id)references degree(id), 
+ foreign key(department_id)references department(id) 
+ );
+
+
+GET, http://localhost:8080/xg18web/teacher.ctl?id=1, 查询id=1的老师
+GET, http://localhost:8080/xg18web/teacher.ctl, 查询所有的老师
+POST, http://localhost:8080/xg18web/teacher.ctl, 增加老师
+PUT, http://localhost:8080/xg18web/teacher.ctl, 修改老师
+DELETE, http://localhost:8080/xg18web/teacher.ctl?id=1, 删除id=1的老师
+
+
+DELIMITER // #将语句结束符设置为双斜线，以下遇到分号不在直接执行该语句
+DROP PROCEDURE IF EXISTS sp_addSchool//
+CREATE PROCEDURE sp_addSchool( #开始定义储存过程
+	IN description VARCHAR(255),
+	no VARCHAR(255),
+	remarks VARCHAR(255),
+	OUT id INT
+)
+BEGIN
+	INSERT INTO school(description,no,remarks)
+	VALUES(description,no,remarks);
+	SELECT LAST_INSERT_ID() INTO id;
+END//
+DELIMITER ;
+
+#保留一空行
+
+
+SHOW PROCEDURE STATUS LIKE'sp%'\G  #查看存储过程
+
+call sp_addSchool("管理工程","001","",@id);  #执行存储过程
+
+select @id;
+
+
+
+远程
+公网IP:  49.234.231.13
+Administrator
+xxCU735w5HnzSF
+
+
+ select id from teacher order by id desc limit 1;
+ select max(id) from teacher;
+
+  create table user(
+ id bigint not null auto_increment,
+ username varchar(255) not null,
+ password varchar(155) not null,
+ teacher_id bigint not null,
+ primary key(id),
+ foreign key(teacher_id)references teacher(id)
+ );
+
