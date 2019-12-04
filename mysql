@@ -1,5 +1,4 @@
 
-
 create table school(
   id bigint not null auto_increment,
   description varchar(255) not null,
@@ -26,22 +25,22 @@ create table school(
  degree_id bigint not null,
  department_id bigint not null,
  primary key(id),
- foreign key(profTitle_id)references profTitle(id), 
- foreign key(degree_id)references degree(id), 
- foreign key(department_id)references department(id) 
+ foreign key(profTitle_id)references profTitle(id),
+ foreign key(degree_id)references degree(id),
+ foreign key(department_id)references department(id)
  );
 
 
-GET, http://localhost:8080/xg18web/teacher.ctl?id=1, ²éÑ¯id=1µÄÀÏÊ¦
-GET, http://localhost:8080/xg18web/teacher.ctl, ²éÑ¯ËùÓÐµÄÀÏÊ¦
-POST, http://localhost:8080/xg18web/teacher.ctl, Ôö¼ÓÀÏÊ¦
-PUT, http://localhost:8080/xg18web/teacher.ctl, ÐÞ¸ÄÀÏÊ¦
-DELETE, http://localhost:8080/xg18web/teacher.ctl?id=1, É¾³ýid=1µÄÀÏÊ¦
+GET, http://localhost:8080/xg18web/teacher.ctl?id=1, ï¿½ï¿½Ñ¯id=1ï¿½ï¿½ï¿½ï¿½Ê¦
+GET, http://localhost:8080/xg18web/teacher.ctl, ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½Ê¦
+POST, http://localhost:8080/xg18web/teacher.ctl, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¦
+PUT, http://localhost:8080/xg18web/teacher.ctl, ï¿½Þ¸ï¿½ï¿½ï¿½Ê¦
+DELETE, http://localhost:8080/xg18web/teacher.ctl?id=1, É¾ï¿½ï¿½id=1ï¿½ï¿½ï¿½ï¿½Ê¦
 
 
-DELIMITER // #½«Óï¾ä½áÊø·ûÉèÖÃÎªË«Ð±Ïß£¬ÒÔÏÂÓöµ½·ÖºÅ²»ÔÚÖ±½ÓÖ´ÐÐ¸ÃÓï¾ä
+DELIMITER // #ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªË«Ð±ï¿½ß£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÖºÅ²ï¿½ï¿½ï¿½Ö±ï¿½ï¿½Ö´ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½
 DROP PROCEDURE IF EXISTS sp_addSchool//
-CREATE PROCEDURE sp_addSchool( #¿ªÊ¼¶¨Òå´¢´æ¹ý³Ì
+CREATE PROCEDURE sp_addSchool( #ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½å´¢ï¿½ï¿½ï¿½ï¿½ï¿½
 	IN description VARCHAR(255),
 	no VARCHAR(255),
 	remarks VARCHAR(255),
@@ -54,19 +53,19 @@ BEGIN
 END//
 DELIMITER ;
 
-#±£ÁôÒ»¿ÕÐÐ
+#ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
 
 
-SHOW PROCEDURE STATUS LIKE'sp%'\G  #²é¿´´æ´¢¹ý³Ì
+SHOW PROCEDURE STATUS LIKE'sp%'\G  #ï¿½é¿´ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½
 
-call sp_addSchool("¹ÜÀí¹¤³Ì","001","",@id);  #Ö´ÐÐ´æ´¢¹ý³Ì
+call sp_addSchool("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½","001","",@id);  #Ö´ï¿½Ð´æ´¢ï¿½ï¿½ï¿½ï¿½
 
 select @id;
 
 
 
-Ô¶³Ì
-¹«ÍøIP:  49.234.231.13
+Ô¶ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½IP:  49.234.231.13
 Administrator
 xxCU735w5HnzSF
 
